@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Loan EMI Calculator</title>
+
+    <script>
+        function calculateEMI() {
+
+            var name = document.getElementById("name").value;
+            var occupation = document.getElementById("occupation").value;
+            var loan = parseFloat(document.getElementById("loan").value);
+            var rate = parseFloat(document.getElementById("rate").value);
+            var years = parseFloat(document.getElementById("years").value);
+
+            var r = rate / (12 * 100);     // Monthly interest rate
+            var n = years * 12;            // Number of months
+
+            var emi = (loan * r * Math.pow(1 + r, n)) /
+                      (Math.pow(1 + r, n) - 1);
+
+            document.getElementById("result").innerHTML =
+                "<h3>Loan Details</h3>" +
+                "<b>Name:</b> " + name + "<br>" +
+                "<b>Occupation:</b> " + occupation + "<br>" +
+                "<b>Loan Amount:</b> ₹" + loan + "<br>" +
+                "<b>Rate of Interest:</b> " + rate + "%<br>" +
+                "<b>Tenure:</b> " + years + " Years<br><br>" +
+                "<b>Monthly EMI: ₹" + emi.toFixed(2) + "</b>";
+
+            return false;
+        }
+    </script>
+
+</head>
+
+<body>
+
+<h2 align="center">Bank Loan EMI Calculator</h2>
+
+<form onsubmit="return calculateEMI();">
+
+<table align="center" cellpadding="8">
+
+<tr>
+    <td>Name:</td>
+    <td><input type="text" id="name" required></td>
+</tr>
+
+<tr>
+    <td>Occupation:</td>
+    <td><input type="text" id="occupation" required></td>
+</tr>
+
+<tr>
+    <td>Loan Amount (₹):</td>
+    <td><input type="number" id="loan" required></td>
+</tr>
+
+<tr>
+    <td>Rate of Interest (%):</td>
+    <td><input type="number" id="rate" step="0.01" required></td>
+</tr>
+
+<tr>
+    <td>Tenure (Years):</td>
+    <td><input type="number" id="years" required></td>
+</tr>
+
+<tr>
+    <td colspan="2" align="center">
+        <input type="submit" value="Calculate EMI">
+        <input type="reset" value="Clear">
+    </td>
+</tr>
+
+</table>
+
+</form>
+
+<hr>
+
+<div id="result" align="center"></div>
+
+</body>
+</html>
