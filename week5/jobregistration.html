@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Registration Form Validation</title>
+
+    <script>
+        function validateForm() {
+
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+
+            // Regular Expressions
+            var namePattern = /^[A-Za-z ]+$/;
+            var emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+            var phonePattern = /^[6-9][0-9]{9}$/;
+
+            if (!namePattern.test(name)) {
+                alert("Invalid Name! Name should contain only alphabets and spaces.");
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert("Invalid Email Address!");
+                return false;
+            }
+
+            if (!phonePattern.test(phone)) {
+                alert("Invalid Contact Number! Enter a valid 10-digit mobile number.");
+                return false;
+            }
+
+            alert("Registered Successfully");
+            return true;
+        }
+    </script>
+
+</head>
+
+<body>
+
+<h2 align="center">Job Registration Form</h2>
+
+<form onsubmit="return validateForm();">
+
+<table align="center" cellpadding="8">
+
+<tr>
+    <td>Name:</td>
+    <td><input type="text" id="name" required></td>
+</tr>
+
+<tr>
+    <td>Gender:</td>
+    <td>
+        <input type="radio" name="gender"> Male
+        <input type="radio" name="gender"> Female
+    </td>
+</tr>
+
+<tr>
+    <td>Languages Known:</td>
+    <td>
+        <input type="checkbox"> English
+        <input type="checkbox"> Telugu
+        <input type="checkbox"> Hindi
+    </td>
+</tr>
+
+<tr>
+    <td>Email:</td>
+    <td><input type="text" id="email" required></td>
+</tr>
+
+<tr>
+    <td>Contact Number:</td>
+    <td><input type="text" id="phone" required></td>
+</tr>
+
+<tr>
+    <td>Address:</td>
+    <td><textarea rows="4" cols="25"></textarea></td>
+</tr>
+
+<tr>
+    <td>Job Location:</td>
+    <td>
+        <select>
+            <option>Hyderabad</option>
+            <option>Bengaluru</option>
+            <option>Chennai</option>
+            <option>Mumbai</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td>About Yourself:</td>
+    <td><textarea rows="4" cols="25"></textarea></td>
+</tr>
+
+<tr>
+    <td>Upload CV:</td>
+    <td><input type="file"></td>
+</tr>
+
+<tr>
+    <td colspan="2" align="center">
+        <input type="reset" value="Clear">
+        <input type="submit" value="Register">
+    </td>
+</tr>
+
+</table>
+
+</form>
+
+</body>
+</html>
